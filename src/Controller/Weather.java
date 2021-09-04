@@ -21,7 +21,10 @@ public class Weather {
     private static String[] hipotesis = new String[jumlahKolom-1];
     
     public static void main(String[] args) {
-        findS();
+        String Target;
+        
+        Target = "Yes";
+        findS(Target);
         inputDataTesting();
     }
     
@@ -115,12 +118,13 @@ public class Weather {
             System.out.println("Enjoy Sport? = No");
     }
     
-    private static void findS() {
-        System.out.print("Hipotesis (Yes) : ");
+    private static void findS(String Source) {
+        String Target = Source;
+        System.out.print("Hipotesis ("+Target+") : ");
         int indeks = 0;
         
         for (int i = 0; i < jumlahBaris; i++) {
-            if (dataTraining[i][jumlahKolom-1].equals("Yes")) {
+            if (dataTraining[i][jumlahKolom-1].equals(Target)) {
                indeks = i;
                break;
             }
@@ -129,7 +133,7 @@ public class Weather {
         System.arraycopy(dataTraining[indeks], 0, hipotesis, 0, jumlahKolom-1);
         
         for (int i = 1; i < jumlahBaris; i++) {
-            if (dataTraining[i][jumlahKolom-1].equals("Yes")) {
+            if (dataTraining[i][jumlahKolom-1].equals(Target)) {
                 for (int j = 0; j < jumlahKolom-1; j++) {
                     if (!hipotesis[j].equals(dataTraining[i][j]))
                         hipotesis[j] = "?";
